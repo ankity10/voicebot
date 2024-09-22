@@ -65,7 +65,7 @@ function WhyChooseUs() {
                 </div>
                 <div className="benefit">
                     <div className='benefit-content'>
-                        <img src='img/fast_v1.svg'></img>
+                        <img src='img/improvement.svg'></img>
                         <h4>Continuous Improvement</h4>
                         <p>Regular updates to underlying models without service interruption.</p>
 
