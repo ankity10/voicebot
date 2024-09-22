@@ -1,7 +1,7 @@
 ---
-sidebar_label: 'Outbound Calls with Voicebot'
+sidebar_label: 'Outbound Calls with Voiceagent'
 sidebar_position: 6
-title: Make Outbound Calls with Voicebot
+title: Make Outbound Calls with Voiceagent
 ---
 
 ### Steps
@@ -11,7 +11,7 @@ title: Make Outbound Calls with Voicebot
 
 
 ### 1. Setup Answer URL handler function
-This function will return `<Stream>` XML element to start the audio streaming to voicebot websocket url
+This function will return `<Stream>` XML element to start the audio streaming to voiceagent websocket url
 
 ```python
 import plivo
@@ -19,16 +19,16 @@ from plivo import plivoxml
 
 client = plivo.RestClient('<auth_id>','<auth_token>')
 
-voicebot = client.voicebots.get(id='<voicebot_id>')
+voiceagent = client.voiceagents.get(id='<voiceagent_id>')
 
 
 # This function handles answer url callbacks rom Plivo
 @app.route('<answer_url>')
 def answer_url_handler():
 
-    stream_element = plivoxml.StreamElement(voicebot.websocket_url, 
+    stream_element = plivoxml.StreamElement(voiceagent.websocket_url, 
                                             bidirectional= "true",
-                                            audioTrack="both",
+                                            audioTrack="agenth",
                                             streamTimeout=120,
                                             statusCallbackMethod="POST",
                                             statusCallbackUrl="https://yourdomain.com/events/",

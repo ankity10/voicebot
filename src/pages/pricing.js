@@ -90,9 +90,11 @@ a.navbar__brand{
   margin-right: 3rem;
 }
 
-navbar__item{
-  padding: 0 60px;
+.navbar__item{
+  padding: 0 20px;
+  font-size: 16px;
 }
+
 
 .navbar{
   height: auto;
@@ -127,9 +129,9 @@ const PricingCard = ({ title, price, description, features }) => (
 const PricingPage = () => {
     const pricingData = [
         {
-            title: "Voice Bots",
+            title: "Voice Agents",
             price: "$0.04/min",
-            description: "Flat rate for all voice bot usage",
+            description: "Flat rate for all voice agent usage",
             features: ["24/7 availability", "Natural language processing", "Customizable responses"]
         },
         {
@@ -217,10 +219,10 @@ const PricingPage = () => {
 //         <div style={styles.container}>
 //             <h1 style={styles.header}></h1>
 //
-//             {/* Voice Bots Pricing */}
+//             {/* Voice Agents Pricing */}
 //             <section style={styles.section}>
-//                 <h2 style={styles.subHeader}>Voice Bots</h2>
-//                 <p style={styles.description}>Voice bots are charged at a flat rate of <strong>$0.04/min</strong>.</p>
+//                 <h2 style={styles.subHeader}>Voice Agents</h2>
+//                 <p style={styles.description}>Voice agents are charged at a flat rate of <strong>$0.04/min</strong>.</p>
 //             </section>
 //
 //             {/* Knowledgebase Pricing */}

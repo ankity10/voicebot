@@ -1,24 +1,24 @@
 ---
-sidebar_label: 'Inbound Calls with Voicebot'
+sidebar_label: 'Inbound Calls with Voiceagent'
 sidebar_position: 7
-title: Make Inbound Calls with Voicebot
+title: Make Inbound Calls with Voiceagent
 ---
 
 ### Steps
-1. Copy voicebot inbound  url
+1. Copy voiceagent inbound  url
 2. Create a XML application
-    - Use voicebot inbound url as answer url in this application
+    - Use voiceagent inbound url as answer url in this application
 3. Associate an inbound number with this application
 
 
-### 1. Get Inbound Call URL From Voicebot
+### 1. Get Inbound Call URL From Voiceagent
 
 ```python
 import plivo
 
 client = plivo.RestClient('<auth_id>','<auth_token>')
 
-voicebot = client.voicebots.get(id='<voicebot_id>')
+voiceagent = client.voiceagents.get(id='<voiceagent_id>')
 
 
 ```
@@ -31,7 +31,7 @@ We will use `inbound_call_url` as `answer_url` in this application
 
 response = client.applications.create(
    app_name='Test Application',
-   answer_url=voicebot.inbound_call_url, )
+   answer_url=voiceagent.inbound_call_url, )
 print(response)
 
 ```

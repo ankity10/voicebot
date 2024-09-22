@@ -1,7 +1,7 @@
 ---
 sidebar_label: 'Adding Functions'
 sidebar_position: 4
-title: Adding Functions to Voicebot
+title: Adding Functions to Voiceagent
 ---
 
 ### 1. Use Python SDK to Create a Function
@@ -52,26 +52,26 @@ print(function)
 }
 ```
 
-### 3. Updating the Voicebot With Function Id
+### 3. Updating the Voiceagent With Function Id
 
 ```python
-voicebot_update_payload = {
+voiceagent_update_payload = {
     "function_ids" : [function.id]
 }
 
-client.voicebot.update(**voicebot_update_payload)
-updated_voicebot = client.voicebots.get(id=voicebot.id)
-print(updated_voicebot)
+client.voiceagent.update(**voiceagent_update_payload)
+updated_voiceagent = client.voiceagents.get(id=voiceagent.id)
+print(updated_voiceagent)
 ```
 
-### 4. Updated Voicebot With Function Associated With It
+### 4. Updated Voiceagent With Function Associated With It
 
 ```json
 {
     "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
     "name": "Jack",
-    "websocket_url": "wss://api.example.com/v1/Account/{auth_id}/Voicebot/{voicebot_id}/connect",
-    "inbound_call_url": "https://api.plivo.com/v1/Account/{auth_id}/Voicebot/{voicebot_id}/inbound_call",
+    "websocket_url": "wss://api.example.com/v1/Account/{auth_id}/Voiceagent/{voiceagent_id}/connect",
+    "inbound_call_url": "https://api.plivo.com/v1/Account/{auth_id}/Voiceagent/{voiceagent_id}/inbound_call",
     "prompt": (
         "You will keep your sentences short and crisp. You will never reply with more than 2 sentences at a time. "
         "You will stick to context throughout. You are test agent, a highly trained Front Desk agent from test. "
