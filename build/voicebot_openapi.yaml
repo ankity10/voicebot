@@ -1,49 +1,49 @@
 openapi: 3.0.0
 info:
-  title: Voicebot API
-  description: API for creating, updating, retrieving, and managing voicebots on Plivo's platform. It includes real-time chat interaction via WebSocket or REST API.
+  title: Voiceagent API
+  description: API for creating, updating, retrieving, and managing voiceagents on Plivo's platform. It includes real-time chat interaction via WebSocket or REST API.
   version: 1.0.0
 servers:
   - url: https://api.plivo.com/v1/Account/{auth_id}
-    description: Plivo Voicebot API Server
+    description: Plivo Voiceagent API Server
 tags:
-  - name: Voicebot
-    description: API for managing voicebots
+  - name: Voiceagent
+    description: API for managing voiceagents
 
 paths:
-  /Voicebot:
+  /Voiceagent:
     post:
-      summary: Create a new voicebot
-      description: This endpoint creates a new voicebot with specified parameters, such as name, prompt, knowledgebase, TTS/STT providers, etc.
+      summary: Create a new voiceagent
+      description: This endpoint creates a new voiceagent with specified parameters, such as name, prompt, knowledgebase, TTS/STT providers, etc.
       tags:
-        - Voicebot
+        - Voiceagent
       requestBody:
-        description: Details for the new voicebot
+        description: Details for the new voiceagent
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/VoicebotRequest'
+              $ref: '#/components/schemas/VoiceagentRequest'
       responses:
         '201':
-          description: Voicebot successfully created.
+          description: Voiceagent successfully created.
           content:
             application/json:
 
               schema:
-                $ref: "#/components/schemas/VoicebotResponse"
+                $ref: "#/components/schemas/VoiceagentResponse"
         '400':
           description: Invalid request parameters.
         '500':
-          description: Server error while creating the voicebot.
+          description: Server error while creating the voiceagent.
 
 
 
     get:
-      summary: List all voicebots
-      description: Retrieve a list of all voicebots associated with the given account.
+      summary: List all voiceagents
+      description: Retrieve a list of all voiceagents associated with the given account.
       tags:
-        - Voicebot
+        - Voiceagent
       parameters:
         - in: query
           name: limit
@@ -59,116 +59,116 @@ paths:
           description: Number of results to skip before starting to return data. Defaults to 0.
       responses:
         '200':
-          description: A list of voicebots was retrieved successfully.
+          description: A list of voiceagents was retrieved successfully.
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  voicebots:
+                  voiceagents:
                     type: array
                     items:
-                      $ref: "#/components/schemas/VoicebotResponse"
+                      $ref: "#/components/schemas/VoiceagentResponse"
 
         '500':
-          description: Server error while fetching the list of voicebots.
+          description: Server error while fetching the list of voiceagents.
 
 
-  /Voicebot/{voicebot_id}:
+  /Voiceagent/{voiceagent_id}:
     get:
-      summary: Retrieve a voicebot by ID
-      description: Fetches details of a specific voicebot using its unique ID.
+      summary: Retrieve a voiceagent by ID
+      description: Fetches details of a specific voiceagent using its unique ID.
       tags:
-        - Voicebot
+        - Voiceagent
       parameters:
         - in: path
-          name: voicebot_id
+          name: voiceagent_id
           required: true
           schema:
             type: string
-          description: The unique ID of the voicebot.
+          description: The unique ID of the voiceagent.
       responses:
         '200':
-          description: Voicebot retrieved successfully.
+          description: Voiceagent retrieved successfully.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/VoicebotResponse"
+                $ref: "#/components/schemas/VoiceagentResponse"
         '404':
-          description: Voicebot not found.
+          description: Voiceagent not found.
         '500':
-          description: Server error while fetching the voicebot.
+          description: Server error while fetching the voiceagent.
 
 
 
     patch:
-      summary: Update an existing voicebot
-      description: Modify details of an existing voicebot by providing its ID and new attributes.
+      summary: Update an existing voiceagent
+      description: Modify details of an existing voiceagent by providing its ID and new attributes.
       tags:
-        - Voicebot
+        - Voiceagent
       parameters:
         - in: path
-          name: voicebot_id
+          name: voiceagent_id
           required: true
           schema:
             type: string
-          description: The unique ID of the voicebot.
+          description: The unique ID of the voiceagent.
       requestBody:
-        description: Attributes to update in the voicebot.
+        description: Attributes to update in the voiceagent.
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/VoicebotUpdateRequest'
+              $ref: '#/components/schemas/VoiceagentUpdateRequest'
       responses:
         '204':
-          description: Voicebot updated successfully.
+          description: Voiceagent updated successfully.
         '400':
           description: Invalid request parameters.
         '404':
-          description: Voicebot not found.
+          description: Voiceagent not found.
         '500':
-          description: Server error while updating the voicebot.
+          description: Server error while updating the voiceagent.
 
 
 
     delete:
-      summary: Delete a voicebot
-      description: Remove an existing voicebot by providing its ID.
+      summary: Delete a voiceagent
+      description: Remove an existing voiceagent by providing its ID.
       tags:
-        - Voicebot
+        - Voiceagent
       parameters:
         - in: path
-          name: voicebot_id
+          name: voiceagent_id
           required: true
           schema:
             type: string
-          description: The unique ID of the voicebot.
+          description: The unique ID of the voiceagent.
       responses:
         '204':
-          description: Voicebot deleted successfully.
+          description: Voiceagent deleted successfully.
         '404':
-          description: Voicebot not found.
+          description: Voiceagent not found.
         '500':
-          description: Server error while deleting the voicebot.
+          description: Server error while deleting the voiceagent.
 
 
 
-  /Voicebot/{voicebot_id}/chat:
+  /Voiceagent/{voiceagent_id}/chat:
     post:
-      summary: Chat with a voicebot
-      description: Engage in a conversation with a voicebot by sending a message.
+      summary: Chat with a voiceagent
+      description: Engage in a conversation with a voiceagent by sending a message.
       tags:
-        - Voicebot
+        - Voiceagent
       parameters:
         - in: path
-          name: voicebot_id
+          name: voiceagent_id
           required: true
           schema:
             type: string
-          description: The unique ID of the voicebot.
+          description: The unique ID of the voiceagent.
       requestBody:
-        description: The message to send to the voicebot.
+        description: The message to send to the voiceagent.
         required: true
         content:
           application/json:
@@ -177,11 +177,11 @@ paths:
               properties:
                 message:
                   type: string
-                  description: User's message for the voice bot.
+                  description: User's message for the voice agent.
                   example: "Can you tell me more about the services you provide?"
       responses:
         '200':
-          description: Voicebot response received successfully.
+          description: Voiceagent response received successfully.
           content:
             application/json:
               schema:
@@ -189,33 +189,33 @@ paths:
                 properties:
                   response:
                     type: string
-                    description: Response from the voice bot
+                    description: Response from the voice agent
                     example: "We provide live chat applications, would you like to know more?"
 
         '400':
           description: Invalid request parameters.
         '404':
-          description: Voicebot not found.
+          description: Voiceagent not found.
         '500':
-          description: Server error while communicating with the voicebot.
+          description: Server error while communicating with the voiceagent.
 
 
-  /Voicebot/{voicebot_id}/inbound_call:
+  /Voiceagent/{voiceagent_id}/inbound_call:
     post:
       summary: Receive inbound calls
       description: This URL to be used as answer URL in your plivo applications for inbound calls.
       tags:
-        - Voicebot
+        - Voiceagent
       parameters:
         - in: path
-          name: voicebot_id
+          name: voiceagent_id
           required: true
           schema:
             type: string
-          description: The unique ID of the voicebot.
+          description: The unique ID of the voiceagent.
 
       requestBody:
-        description: This request body is sent by Plivo server to voicebots for inbound calls.
+        description: This request body is sent by Plivo server to voiceagents for inbound calls.
         required: true
         content:
           application/json:
@@ -269,7 +269,7 @@ paths:
 
       responses:
         '200':
-          description: Voicebot started audio stream.
+          description: Voiceagent started audio stream.
           content:
             application/json:
               schema:
@@ -278,14 +278,14 @@ paths:
                   response:
                     type: string
                     description: XML response to start the audio stream using `<Response>` and `<Stream>` objects
-                    example: '<Response><Stream bidirectional="false" streamTimeout="120" audioTrack="both" statusCallbackUrl="https://<yourdomain>.com/events/" statusCallbackMethod="POST" contentType="raw">wss://yourstream.websocket.io/audiostream</Stream></Response>'
+                    example: '<Response><Stream bidirectional="false" streamTimeout="120" audioTrack="agenth" statusCallbackUrl="https://<yourdomain>.com/events/" statusCallbackMethod="POST" contentType="raw">wss://yourstream.websocket.io/audiostream</Stream></Response>'
 
         '400':
           description: Invalid request parameters.
         '404':
-          description: Voicebot not found.
+          description: Voiceagent not found.
         '500':
-          description: Server error while communicating with the voicebot.
+          description: Server error while communicating with the voiceagent.
 
 
 
@@ -527,17 +527,17 @@ paths:
 
 components:
   schemas:
-    VoicebotUpdateRequest:
+    VoiceagentUpdateRequest:
       type: object
       properties:
 
         name:
           type: string
-          description: The name of the voicebot.
+          description: The name of the voiceagent.
           example: "Jack"
         prompt:
           type: string
-          description: The initial prompt for the bot to set context.
+          description: The initial prompt for the agent to set context.
           example: You will keep your sentences short and crisp. You will never reply with more than 2 sentences at a time. You will stick to context throughout. You are test agent, a highly trained Front Desk agent from test. Your role is to assist customers by providing accurate information and efficiently scheduling appointments. Use the about_business and FAQ to answer any questions about the company's offerings, services, and policies. Always stay polite, professional, and concise.
 
         answer_llm:
@@ -563,13 +563,13 @@ components:
           items:
             type: string
             format: uuid
-          description: IDs of the knowledgebases used by the voicebot.
+          description: IDs of the knowledgebases used by the voiceagent.
         function_ids:
           type: array
           items:
             type: string
             format: uuid
-          description: IDs of functions the voicebot can perform.
+          description: IDs of functions the voiceagent can perform.
         tts:
           type: object
           description: The configuration for text-to-speech.
@@ -677,29 +677,29 @@ components:
           description: Time in seconds before the call times out.
 
 
-    VoicebotResponse:
+    VoiceagentResponse:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          description: The unique ID of the voicebot.
+          description: The unique ID of the voiceagent.
         name:
           type: string
-          description: The name of the voicebot.
+          description: The name of the voiceagent.
           example: "Jack"
         websocket_url:
           type: string
-          example: "wss://api.example.com/v1/Account/{auth_id}/Voicebot/{voicebot_id}/connect"
-          description: The URL for WebSocket communication with the voicebot.
+          example: "wss://api.example.com/v1/Account/{auth_id}/Voiceagent/{voiceagent_id}/connect"
+          description: The URL for WebSocket communication with the voiceagent.
         inbound_call_url:
           type: string
           description: URL to be used to handle inbound calls.
-          example: "https://api.plivo.com/v1/Account/{auth_id}/Voicebot/{voicebot_id}/inbound_call"
+          example: "https://api.plivo.com/v1/Account/{auth_id}/Voiceagent/{voiceagent_id}/inbound_call"
 
         prompt:
           type: string
-          description: The initial prompt for the bot to set context.
+          description: The initial prompt for the agent to set context.
           example: You will keep your sentences short and crisp. You will never reply with more than 2 sentences at a time. You will stick to context throughout. You are test agent, a highly trained Front Desk agent from test. Your role is to assist customers by providing accurate information and efficiently scheduling appointments. Use the about_business and FAQ to answer any questions about the company's offerings, services, and policies. Always stay polite, professional, and concise.
 
         answer_llm:
@@ -725,13 +725,13 @@ components:
           items:
             type: string
             format: uuid
-          description: IDs of the knowledgebases used by the voicebot.
+          description: IDs of the knowledgebases used by the voiceagent.
         function_ids:
           type: array
           items:
             type: string
             format: uuid
-          description: IDs of functions the voicebot can perform.
+          description: IDs of functions the voiceagent can perform.
         tts:
           type: object
           description: The configuration for text-to-speech.
@@ -840,16 +840,16 @@ components:
 
 
 
-    VoicebotRequest:
+    VoiceagentRequest:
       type: object
       properties:
         name:
           type: string
-          description: The name of the voicebot.
+          description: The name of the voiceagent.
           example: "Jack"
         prompt:
           type: string
-          description: The initial prompt for the bot to set context.
+          description: The initial prompt for the agent to set context.
           example: You will keep your sentences short and crisp. You will never reply with more than 2 sentences at a time. You will stick to context throughout. You are test agent, a highly trained Front Desk agent from test. Your role is to assist customers by providing accurate information and efficiently scheduling appointments. Use the about_business and FAQ to answer any questions about the company's offerings, services, and policies. Always stay polite, professional, and concise.
 
         answer_llm:
@@ -875,13 +875,13 @@ components:
           items:
             type: string
             format: uuid
-          description: IDs of the knowledgebases used by the voicebot.
+          description: IDs of the knowledgebases used by the voiceagent.
         function_ids:
           type: array
           items:
             type: string
             format: uuid
-          description: IDs of functions the voicebot can perform.
+          description: IDs of functions the voiceagent can perform.
         tts:
           type: object
           description: The configuration for text-to-speech.
