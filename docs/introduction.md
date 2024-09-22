@@ -31,19 +31,19 @@ Outbound calls are the calls initiated by your application or client SDK. You wi
 
 ### Functional Scope of APIs
 
-1. **[Voice Agent API]** Create voice agents
+1. **Voice Agent API** Create voice agents
     - Create, Get, Delete, Update, List
     - Chat with a agent
-2. **[Functions API]** Perform actions through voice agents by adding functions in them
+2. **Functions API** Perform actions through voice agents by adding functions in them
     - Create, Delete, Update, Get, List
     - Agents can perform actions like booking appointment, placing orders, etc.
-3. **[Knowledgebase API]** Add additional knowledge to these voice agents
+3. **Knowledgebase API** Add additional knowledge to these voice agents
     - Create, Get, Delete, Update, List
     - Adding knowledgebase allows voice agents to have context, this improves answer quality and reduces hallucination.
 
-4. **[Voice  Agent Usage for Inbound]** Let the voice agents answer inbound calls
+4. **Voice  Agent Usage for Inbound** Let the voice agents answer inbound calls
  
-5. **[Voice  Agent Usage for Outbound]** Let the voice agents make outbound calls
+5. **Voice  Agent Usage for Outbound** Let the voice agents make outbound calls
 
 
 
