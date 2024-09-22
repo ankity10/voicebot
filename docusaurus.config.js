@@ -9,7 +9,7 @@ import path from 'path';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'AI Voice Bot',
-  tagline: 'AI-Driven Voice Bots for Smarter Conversations',
+  tagline: 'Engage, Automate, and Accelerate Business with Conversational AI',
   favicon: 'img/voice_bot_icon_v1.svg',
 
   // Set the production url of your site here
@@ -78,7 +78,7 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'AI Voice Bot',
+        title: 'AI Voice Agents',
         logo: {
           alt: 'My Site Logo',
           src: 'img/voice_bot_icon_v1.svg',
@@ -106,12 +106,17 @@ const config = {
       footer: {
         style: 'dark',
 
-        copyright: `Copyright © ${new Date().getFullYear()} Voicebot, Inc.`,
+        copyright: `Copyright © ${new Date().getFullYear()} AI Voice Agents, Inc.`,
       },
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
       },
+      colorMode: {
+        defaultMode: 'light',
+        disableSwitch: true,
+        respectPrefersColorScheme: false,
+      }
     }),
 };
 

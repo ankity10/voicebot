@@ -74,6 +74,39 @@ const styles = `
     text-align: center;
   }
   
+  
+.navbar__inner{
+ max-width: 1200px;
+ margin-left: auto;
+ margin-right: auto;
+  margin-top: 30px;
+}
+
+.navbar--fixed-top {
+  box-shadow: none;
+}
+
+a.navbar__brand{
+  margin-right: 3rem;
+}
+
+navbar__item{
+  padding: 0 60px;
+}
+
+.navbar{
+  height: auto;
+}
+.hero {
+    background: #fff;  
+    color: #000;
+    
+}
+
+.hero__title{
+font-size: 4rem;
+}
+
 `;
 
 const PricingCard = ({ title, price, description, features }) => (

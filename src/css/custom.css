@@ -30,3 +30,85 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+
+.sec1{
+  background: #fff;
+  padding: 50px 100px;
+}
+
+.heading {
+  font-size: 3.6rem;
+  font-weight: 600;
+  color: #000;
+  margin:auto;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
+
+div.benefit{
+  width: 33.33%;
+  display: inline-block;
+  float: left;
+}
+
+.benefit-content{
+  margin: auto;
+  max-width: 350px;
+  padding: 10px 40px;
+  text-align: center;
+}
+
+.benefit-content h4{
+  margin-top: 20px;
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.sec1 img{
+  max-width: 60%;
+}
+
+.hero__subtitle{
+  font-size: 1.1rem;
+  margin-bottom: 30px !important;
+  margin-top: 30px !important;
+}
+
+.hero__title{
+  margin-top: 50px;
+}
+
+.footer {
+  background: #05006d;
+}
+
+.navbar__logo img{
+  margin-top: -5px;
+}
+header {
+  position: relative;
+}
+
+.il-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  max-width: 400px;
+}
+
+
+.il-left {
+  max-width: 450px;
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+}
+
+
+.featureSvg_src-components-HomepageFeatures-styles-module{
+  width: 100px !important;
+  height: 100px !important;
+}

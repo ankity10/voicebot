@@ -9,3 +9,21 @@
   height: 200px;
   width: 200px;
 }
+
+.heading {
+  font-size: 3.6rem;
+  font-weight: 600;
+  color: #05006d;
+  margin: auto;
+  text-align: center;
+  margin-top: 80px !important;
+  margin-bottom: 30px !important;
+}
+
+.sec2{
+  padding-bottom: 30px;
+}
+
+.h3{
+  margin-top:14px;
+}
