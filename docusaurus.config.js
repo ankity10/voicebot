@@ -8,7 +8,18 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import path from 'path';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'AI Voice Bot',
+  scripts: [
+    // String format.
+
+    // Object format.
+    {
+      src: 'https://code.jquery.com/jquery-3.7.1.min.js',
+    },
+    {
+      src: 'custom.js',
+    }
+  ],
+  title: 'AI Voice Agent',
   tagline: 'Engage, Automate, and Accelerate Business with Conversational AI',
   favicon: 'img/voice_bot_icon_v1.svg',
 
@@ -20,8 +31,8 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'Voicebot', // Usually your repo name.
+  organizationName: 'Voice Agent', // Usually your GitHub org/user name.
+  projectName: 'Voice Agent', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -59,7 +70,7 @@ const config = {
 
             // Remote File
             spec: 'static/voicebot_openapi.yaml',
-            route: '/api-reference/voicebot',
+            route: '/api-reference/voiceagent',
           },
         ],
         theme: {
@@ -71,6 +82,9 @@ const config = {
       }
     ],
   ],
+
+
+
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -93,7 +107,7 @@ const config = {
 
           {
             position: 'left',
-            href: "/api-reference/voicebot",
+            href: "/api-reference/voiceagent",
             label: "API Reference"
           }
           ,{

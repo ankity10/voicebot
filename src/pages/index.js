@@ -9,8 +9,18 @@ import img from '@site/static/img/shape.svg'
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
 
+
+
 const style = `
 
+.scroll_nav{
+margin-top:5px;
+}
+ .hero__title{
+    font-size: 4.2rem;
+    color: #000;
+    
+    }
 .navbar__inner{
  max-width: 1200px;
  margin-left: auto;
@@ -36,6 +46,66 @@ a.navbar__brand{
 }
 
 
+@media (max-width: 1281px) {
+  
+}
+
+
+
+@media (max-width: 996px) {
+
+    .hero__title{
+    font-size: 3.4rem;
+    
+    }
+    
+    h3.heading {
+    font-size: 2.6rem;
+    margin-bottom: 40px;
+    }
+.heading_src-components-HomepageFeatures-styles-module{
+font-size: 2.6rem
+}
+  .navbar__inner {
+    margin-top: 0px;
+  }
+  
+  div.sec1 {
+    padding: 25px 40px;
+  }
+  div.benefit{
+    width: 100%;
+  }
+  div.benefit-content{
+    max-width:500px;
+    padding: 10px 10px;
+  }
+}
+
+
+
+@media (max-width: 660px) {
+
+  div.benefit-content h4{
+    font-size: 1.6rem;
+  }
+  div.benefit-content p{
+    font-size: 1rem;
+  }
+  div.benefit-content{
+    padding: 0px 0px;
+  }
+}
+
+@media (max-width: 481px) {
+.sec2_src-components-HomepageFeatures-styles-module{
+padding: 25px 40px;
+}
+}
+
+@media (max-width: 320px){
+
+}
 
 
 `
@@ -85,7 +155,7 @@ function HomepageHeader() {
 
             <div className="container" style={{textAlign: "center"}}>
                 {/*<img src="img/voice_bot_icon_v1.svg"></img>*/}
-                <Heading as="h1" className="hero__title" style={{color: "#000", fontSize: '4.2rem'}}>
+                <Heading as="h1" className="hero__title" >
 
                     Transform Your Customer Experience with <span
                     style={{color: 'rgb(18 208 109)'}}>AI Voice Agents</span>
@@ -127,6 +197,7 @@ export default function Home() {
 
                   <HomepageFeatures />
               </main>
+
           </Layout>
       </div>
 

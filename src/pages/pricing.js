@@ -42,7 +42,7 @@ const styles = `
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
   }
   .pricing-title {
-    font-size: 1.25rem;
+    font-size: 1.45rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
   }
@@ -107,23 +107,68 @@ a.navbar__brand{
 
 .hero__title{
 font-size: 4rem;
+margin-top: 0;
 }
+
+.pricing-content{
+padding-left: 3rem;
+padding-right: 3rem;
+padding-top: 1.5rem;
+padding-bottom: 2.5rem
+}
+
+.pricing-card{
+padding: 0
+}
+
+.card-title-wrap{
+    padding: 1.5rem 2rem;
+    background: #03a94a;
+    color: #fff;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    text-align: center;
+}
+@media (max-width: 996px) {
+
+  .navbar__inner {
+    margin-top: 0px ;
+  }
+
+  div.sec1 {
+    padding: 25px 40px;
+  }
+  div.benefit{
+    width: 100%;
+  }
+  div.benefit-content{
+    max-width:500px;
+    padding: 10px 10px;
+  }
+}
+
 
 `;
 
 const PricingCard = ({ title, price, description, features }) => (
     <div className="pricing-card">
-        <h3 className="pricing-title">{title}</h3>
-        <p className="pricing-price">{price}</p>
-        <p className="pricing-description">{description}</p>
-        <ul className="feature-list">
-            {features.map((feature, index) => (
-                <li key={index} className="feature-item">
-                    <Sparkles className="feature-icon" size={16} />
-                    <span>{feature}</span>
-                </li>
-            ))}
-        </ul>
+        <div className='card-title-wrap'>
+            <h3 className="pricing-title">{title}</h3>
+
+        </div>
+        <div className='pricing-content'>
+            <p className="pricing-price">{price}</p>
+            <p className="pricing-description">{description}</p>
+            <ul className="feature-list">
+                {features.map((feature, index) => (
+                    <li key={index} className="feature-item">
+                        <Sparkles className="feature-icon" size={16}/>
+                        <span>{feature}</span>
+                    </li>
+                ))}
+            </ul>
+        </div>
+
     </div>
 );
 const PricingPage = () => {
@@ -152,7 +197,8 @@ const PricingPage = () => {
         <div className="pricing">
             <style>{styles}</style>
             <div className="container">
-                <h1 className="pricing-header">Simple, Transparent Pricing</h1>
+
+                <h1 className="pricing-header" style={{color: '#03a94a'}}>Pricing</h1>
                 <div className="pricing-grid">
                     {pricingData.map((plan, index) => (
                         <PricingCard key={index} {...plan} />
@@ -163,85 +209,6 @@ const PricingPage = () => {
         </div>
     );
 };
-
-// const styles = {
-//     container: {
-//         maxWidth: '800px',
-//         margin: '0 auto',
-//         padding: '20px',
-//         fontFamily: 'Arial, sans-serif',
-//         textAlign: 'center',
-//     },
-//     header: {
-//         fontSize: '36px',
-//         marginBottom: '20px',
-//         color: '#333',
-//     },
-//     section: {
-//         marginBottom: '40px',
-//     },
-//     subHeader: {
-//         fontSize: '28px',
-//         marginBottom: '10px',
-//         color: '#555',
-//     },
-//     description: {
-//         fontSize: '18px',
-//         color: '#666',
-//         marginBottom: '10px',
-//     },
-//     ctaSection: {
-//         marginTop: '50px',
-//         backgroundColor: '#f0f4f8',
-//         padding: '20px',
-//         borderRadius: '8px',
-//     },
-//     ctaHeader: {
-//         fontSize: '24px',
-//         marginBottom: '15px',
-//         color: '#333',
-//     },
-//     button: {
-//         padding: '10px 20px',
-//         fontSize: '18px',
-//         backgroundColor: '#007BFF',
-//         color: '#fff',
-//         border: 'none',
-//         borderRadius: '5px',
-//         cursor: 'pointer',
-//     },
-// };
-
-
-//
-// const PricingPage = () => {
-//     return (
-//         <div style={styles.container}>
-//             <h1 style={styles.header}></h1>
-//
-//             {/* Voice Agents Pricing */}
-//             <section style={styles.section}>
-//                 <h2 style={styles.subHeader}>Voice Agents</h2>
-//                 <p style={styles.description}>Voice agents are charged at a flat rate of <strong>$0.04/min</strong>.</p>
-//             </section>
-//
-//             {/* Knowledgebase Pricing */}
-//             <section style={styles.section}>
-//                 <h2 style={styles.subHeader}>Knowledgebase Storage</h2>
-//                 <p style={styles.description}>Each account comes with <strong>1 GB of free</strong> knowledgebase storage.</p>
-//                 <p style={styles.description}>For storage above 1 GB, it's <strong>$0.30/GB/Month</strong>.</p>
-//             </section>
-//
-//             {/* LLMs STT and TSS Pricing */}
-//             <section style={styles.section}>
-//                 <h2 style={styles.subHeader}>LLM, Speech to Text and Text to Speech</h2>
-//                 <p style={styles.description}>You will be charged <strong>at cost</strong> for LLM, speech to text and text to speech models</p>
-//             </section>
-//
-//         </div>
-//     );
-// };
-//
 
 
 
@@ -265,9 +232,9 @@ export default function Home() {
     return (
         <Layout
             title={`AI ${siteConfig.title}`}
-            description="Description will go into a meta tag in <head />">
-            <HomepageHeader />
-            <main>
+            description="Description will go into a meta tag in <head />" style={{background: "#fff"}}>
+            {/*<HomepageHeader />*/}
+            <main >
                 <PricingPage></PricingPage>
             </main>
         </Layout>

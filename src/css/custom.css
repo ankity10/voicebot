@@ -31,7 +31,13 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
+body{
+  background: #fff !important;
+}
 
+.menu__link--active:not(.menu__link--sublist){
+  background: #fff !important;
+}
 .sec1{
   background: #fff;
   padding: 50px 100px;
@@ -95,7 +101,6 @@ header {
   position: absolute;
   top: 0;
   right: 0;
-  z-index: 1000;
   max-width: 400px;
 }
 
@@ -107,8 +112,72 @@ header {
   left: 0;
 }
 
+.sticky {
+  margin-top: 0px !important;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.shadow{
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px -1px 0px 0px inset !important;
+
+}
 
 .featureSvg_src-components-HomepageFeatures-styles-module{
   width: 100px !important;
   height: 100px !important;
 }
+
+@media (max-width: 1281px) {
+
+}
+
+
+
+@media (max-width: 996px) {
+
+  .navbar__inner {
+    margin-top: 0px ;
+  }
+
+  div.sec1 {
+    padding: 25px 40px;
+  }
+  div.benefit{
+    width: 100%;
+  }
+  div.benefit-content{
+    max-width:500px;
+    padding: 10px 10px;
+  }
+}
+
+
+
+@media (max-width: 660px) {
+
+  .sticky {
+    margin-top: 0px !important;
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+
+  div.benefit-content h4{
+    font-size: 1.6rem;
+  }
+  div.benefit-content p{
+    font-size: 1rem;
+  }
+  div.benefit-content{
+    padding: 0px 0px;
+  }
+}
+
+@media (max-width: 481px) {
+
+}
+
+@media (max-width: 320px){
+
+}
+
