@@ -1,7 +1,7 @@
 ---
-sidebar_label: 'Outbound Calls with Voiceagent'
+sidebar_label: 'Outbound Calls with Voice Agent'
 sidebar_position: 6
-title: Make Outbound Calls with Voiceagent
+title: Make Outbound Calls with Voice Agent
 ---
 
 ### Steps

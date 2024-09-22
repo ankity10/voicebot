@@ -1,11 +1,28 @@
 ---
 sidebar_label: 'Adding Functions'
 sidebar_position: 4
-title: Adding Functions to Voiceagent
+title: Adding Functions to Voice Agent
 ---
 
+## What are Functions?
+A function allows an LLM to interact with other software systems using REST API calls.
+
+### Use Cases
+
+1. Giving order status
+2. Booking appointments
+3. Transferring calls
+4. Placing orders
+
+## Create a Function
+
+We will create an `order status function` and associate this function to our newly created voice agent.
+
 ### 1. Use Python SDK to Create a Function
-In this example we will create a `callTransfer` function. We will provide it a `handler_url` along with other details. We will also provide the fixed parameters. `fixedParameters` has a `transferToNumber` to be used by handler_url to transfer the call.
+In this example we will create a `orderStatus` function. We will provide it a `handler_url` along with other details.
+
+1. `handler_url`: This is the URL where LLM will make API request.
+2. `user_parameters`: We need to provide what parameters LLM should get from user before making the API call.
 
 
 ```python
@@ -18,7 +35,7 @@ function_payload = {
     "handler_url": "https://yourapp.com/handle-transfer-call",
 
     "description": "This function transfers the call to a human agent when a user requests.",
-    "userParameters": [
+    "user_parameters": [
     ],
     "fixedParameters": [
         {
@@ -41,7 +58,7 @@ print(function)
   "name": "callTransfer",
   "handler_url": "https://yourapp.com/handle-transfer-call",
   "description": "This function transfers the call to a human agent when a user requests.",
-  "userParameters": [
+  "user_parameters": [
   ],
   "fixedParameters": [
     {

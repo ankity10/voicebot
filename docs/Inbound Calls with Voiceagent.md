@@ -1,7 +1,7 @@
 ---
-sidebar_label: 'Inbound Calls with Voiceagent'
+sidebar_label: 'Inbound Calls with Voice Agent'
 sidebar_position: 7
-title: Make Inbound Calls with Voiceagent
+title: Make Inbound Calls with Voice Agent
 ---
 
 ### Steps

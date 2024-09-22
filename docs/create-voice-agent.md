@@ -1,11 +1,22 @@
 ---
-sidebar_label: 'Create Voice agent'
+sidebar_label: 'Create Voice Agent'
 sidebar_position: 3
-title: Create Voice agent
+title: Create Voice Agent
 ---
 
-### 1. Use Python SDK to Create Voiceagent
-This Python SDK follows same specifications and function interface as Plivo's official Python SDK.
+### What is a Voice Agent? 
+A voice agent is an object that includes LLM information such as the LLM provider and the specific model to be used, along with a behavior prompt and details about the speech-to-text (STT) and text-to-speech (TTS) models.
+
+
+:::info
+The Python SDK used in example below follows same specifications api and function interface as Plivo's official Python SDK.
+:::
+
+### Steps
+1. Use Python SDK to create voice agent
+
+### 1. Use Python SDK to Create Voice Agent
+
 
 ```python
 
@@ -39,17 +50,16 @@ voiceagent_payload = {
 voiceagent = client.voiceagents.create(
     **voiceagent_payload
 )
-
-
-```
-
-### 2. Newly Created Voiceagent Object
-
-The newly created voiceagent object will not have any functions and knowledgebase associated with it. They have to be added separately.
-
-```python
 print(voiceagent)
+
+
 ```
+
+### 2. Newly Created Voice Agent Object
+
+:::info
+The newly created voice agent object will not have any functions and knowledgebase associated with it. They have to be added separately.
+:::
 
 ```json
 {

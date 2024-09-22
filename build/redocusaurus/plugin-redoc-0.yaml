@@ -1002,7 +1002,7 @@ components:
           example: >-
             This function transfer the call to a human agent when a user
             requests.
-        userParameters:
+        user_parameters:
           type: array
           description: List of user-defined parameters for the function.
           items:
@@ -1060,7 +1060,7 @@ components:
           example: >-
             This function transfer the call to a human agent when a user
             requests.
-        userParameters:
+        user_parameters:
           type: array
           description: List of user-defined parameters for the function.
           items:
