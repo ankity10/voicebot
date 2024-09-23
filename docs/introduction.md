@@ -12,6 +12,14 @@ AI voice agents are programs powered by large language models (LLMs) designed to
 These agents provide significant benefits to businesses across various industries by streamlining operations, enhancing customer experiences, and reducing costs.
 
 
+## Voice Agent Architecture
+
+![voice agent](/img/voice_agent_arch.svg)
+
+## Voice Agent Flow
+
+![voice agent](/img/agent_flow.svg)
+
 
 ## How Voice Agents Work With Plivo
 
