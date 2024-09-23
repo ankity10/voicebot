@@ -16,8 +16,8 @@ These agents provide significant benefits to businesses across various industrie
 ### Sales Use Cases
 1. Appointment Scheduling
 2. Upselling
-3. Customer Re-engagement
-4. Order Placement
+3. Order Placement
+4. Lead Qualification
 
 ### Support Use Case
 1. Automated Customer Support
