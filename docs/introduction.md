@@ -11,8 +11,19 @@ AI voice agents are programs powered by large language models (LLMs) designed to
 
 These agents provide significant benefits to businesses across various industries by streamlining operations, enhancing customer experiences, and reducing costs.
 
+## Use Cases
 
-## Voice Agent Architecture
+### Sales Use Cases
+1. Appointment Scheduling
+2. Upselling
+3. Customer Re-engagement
+4. Order Placement
+
+### Support Use Case
+1. Automated Customer Support
+2. Voice Enabled Knowledge Base
+
+## Key Components of Voice Agent
 
 ![voice agent](/img/voice_agent_arch.svg)
 
