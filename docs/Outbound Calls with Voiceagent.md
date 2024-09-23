@@ -4,49 +4,36 @@ sidebar_position: 6
 title: Make Outbound Calls with Voice Agent
 ---
 
+Outbound calls are phone calls initiated by your business to customers or external parties.
+
 ### Steps
 
-1. Setup Answer url in your application and start audio streaming.
+1. Use voice agent's `call_url` as answer URL
 2. Make an outbound call using SDK
 
 
-### 1. Setup Answer URL handler function
-This function will return `<Stream>` XML element to start the audio streaming to voiceagent websocket url
-
-```python
-import plivo
-from plivo import plivoxml
-
-client = plivo.RestClient('<auth_id>','<auth_token>')
-
-voiceagent = client.voiceagents.get(id='<voiceagent_id>')
+### 1. Use Voice Agent's `call_url` as Answer URL
+Voice agent's `call_url` initiates an audio stream using `<Stream>` xml object.
 
 
-# This function handles answer url callbacks rom Plivo
-@app.route('<answer_url>')
-def answer_url_handler():
-
-    stream_element = plivoxml.StreamElement(voiceagent.websocket_url, 
-                                            bidirectional= "true",
-                                            audioTrack="agenth",
-                                            streamTimeout=120,
-                                            statusCallbackMethod="POST",
-                                            statusCallbackUrl="https://yourdomain.com/events/",
-                                            contentType="audio/x-l16;rate=8000",
-                                            extraHeaders="Test1=Test2,Test3=Test4")
-    
-    response = plivoxml.ResponseElement().add(stream_element)
-    return response.to_string()
-```
 
 ### 2. Make Outbound Call
 
+Use Python SDK to make the call and use voice agent's `call_url` as `answer_url`
+
 ```python
+import plivo
+
+client = plivo.RestClient(auth_id='<auth_id>', auth_token='<auth_token>')
+
+# get your voice agent using id
+voiceagent = client.voiceagents.get(id='<voice agent id>')
+
 # outbound call
 call_made = client.calls.create(
     from_='<caller_id>',
     to_='<destination_number>',
-    answer_url='https://<answer.url>'
+    answer_url=voiceagent.call_url  # using voice agent's call url as answer url
 )
 ```
 

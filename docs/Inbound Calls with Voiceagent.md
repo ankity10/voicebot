@@ -4,14 +4,17 @@ sidebar_position: 7
 title: Make Inbound Calls with Voice Agent
 ---
 
+
+Inbound calls are phone calls initiated by customers or external parties to your business.
+
 ### Steps
-1. Copy voiceagent inbound  url
-2. Create a XML application
-    - Use voiceagent inbound url as answer url in this application
-3. Associate an inbound number with this application
+1. Copy voiceagent `call_url`
+2. Create an XML application
+    - Use voice agent's `call_url` as `answer_url` in this application
+3. Associate a phone number with this application
 
 
-### 1. Get Inbound Call URL From Voiceagent
+### 1. Get `call_url` From Voice Agent
 
 ```python
 import plivo
@@ -23,15 +26,15 @@ voiceagent = client.voiceagents.get(id='<voiceagent_id>')
 
 ```
 
-### 2. Create an Application
+### 2. Create an XML Application
 
-We will use `inbound_call_url` as `answer_url` in this application
+We will use voice agent's `call_url` as `answer_url` in this application
 
 ```python
 
 response = client.applications.create(
    app_name='Test Application',
-   answer_url=voiceagent.inbound_call_url, )
+   answer_url=voiceagent.call_url, )
 print(response)
 
 ```
@@ -45,7 +48,7 @@ Newly created application object
 }
 ```
 
-### 3. Associate an Inbound Number With Application
+### 3. Associate a Phone Number With Application
 
 ```python
 # using app id from above code
@@ -54,4 +57,8 @@ client.numbers.update(
     app_id='15784735442685051', )
 
 ```
+
+:::info
+Once the setup is complete, the voice agent will automatically answer any calls received by Plivo on this number.
+:::
 

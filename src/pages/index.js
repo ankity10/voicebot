@@ -136,8 +136,8 @@ function WhyChooseUs() {
                 <div className="benefit">
                     <div className='benefit-content'>
                         <img src='img/improvement.svg'></img>
-                        <h4>Continuous Improvement</h4>
-                        <p>Regular updates to underlying models without service interruption.</p>
+                        <h4>Instant Voice Response</h4>
+                        <p>Deployed on Plivo's infra for lightning-fast interactions with the platform.</p>
 
                     </div>
                 </div>

@@ -1,22 +1,49 @@
 openapi: 3.0.0
 info:
-  title: Voiceagent API
+  title: Voice agent API
   description: >-
     API for creating, updating, retrieving, and managing voiceagents on Plivo's
     platform. It includes real-time chat interaction via WebSocket or REST API.
   version: 1.0.0
 servers:
   - url: https://api.plivo.com/v1/Account/{auth_id}
-    description: Plivo Voiceagent API Server
+    description: Plivo Voice agent API Server
 tags:
   - name: Voiceagent
     description: API for managing voiceagents
+  - name: Functions
+    description: CRUD APIs for managing functions
+  - name: Knowledgebase
+    description: APIs to manage knowledgebase
+  - name: voiceagent_model
+    x-displayName: Voice Agent Model
+    description: |
+      <SchemaDefinition schemaRef="#/components/schemas/VoiceagentResponse"/>
+  - name: function_model
+    x-displayName: Function Model
+    description: |
+      <SchemaDefinition schemaRef="#/components/schemas/Function"/>
+  - name: knowledgebase_model
+    x-displayName: Knowledgebase Model
+    description: |
+      <SchemaDefinition schemaRef="#/components/schemas/Knowledgebase"/>
+x-tagGroups:
+  - name: API
+    tags:
+      - Voiceagent
+      - Functions
+      - Knowledgebase
+  - name: Models
+    tags:
+      - voiceagent_model
+      - function_model
+      - knowledgebase_model
 paths:
   /Voiceagent:
     post:
       summary: Create a new voiceagent
       description: >-
-        This endpoint creates a new voiceagent with specified parameters, such
+        This endpoint creates a new voice agent with specified parameters, such
         as name, prompt, knowledgebase, TTS/STT providers, etc.
       tags:
         - Voiceagent
@@ -29,7 +56,7 @@ paths:
               $ref: '#/components/schemas/VoiceagentRequest'
       responses:
         '201':
-          description: Voiceagent successfully created.
+          description: Voice agent successfully created.
           content:
             application/json:
               schema:
@@ -74,8 +101,8 @@ paths:
           description: Server error while fetching the list of voiceagents.
   /Voiceagent/{voiceagent_id}:
     get:
-      summary: Retrieve a voiceagent by ID
-      description: Fetches details of a specific voiceagent using its unique ID.
+      summary: Retrieve a voice agent by ID
+      description: Fetches details of a specific voice agent using its unique ID.
       tags:
         - Voiceagent
       parameters:
@@ -87,19 +114,19 @@ paths:
           description: The unique ID of the voiceagent.
       responses:
         '200':
-          description: Voiceagent retrieved successfully.
+          description: Voice agent retrieved successfully.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/VoiceagentResponse'
         '404':
-          description: Voiceagent not found.
+          description: Voice agent not found.
         '500':
           description: Server error while fetching the voiceagent.
     patch:
       summary: Update an existing voiceagent
       description: >-
-        Modify details of an existing voiceagent by providing its ID and new
+        Modify details of an existing voice agent by providing its ID and new
         attributes.
       tags:
         - Voiceagent
@@ -119,16 +146,16 @@ paths:
               $ref: '#/components/schemas/VoiceagentUpdateRequest'
       responses:
         '204':
-          description: Voiceagent updated successfully.
+          description: Voice agent updated successfully.
         '400':
           description: Invalid request parameters.
         '404':
-          description: Voiceagent not found.
+          description: Voice agent not found.
         '500':
           description: Server error while updating the voiceagent.
     delete:
       summary: Delete a voiceagent
-      description: Remove an existing voiceagent by providing its ID.
+      description: Remove an existing voice agent by providing its ID.
       tags:
         - Voiceagent
       parameters:
@@ -140,15 +167,15 @@ paths:
           description: The unique ID of the voiceagent.
       responses:
         '204':
-          description: Voiceagent deleted successfully.
+          description: Voice agent deleted successfully.
         '404':
-          description: Voiceagent not found.
+          description: Voice agent not found.
         '500':
           description: Server error while deleting the voiceagent.
   /Voiceagent/{voiceagent_id}/chat:
     post:
       summary: Chat with a voiceagent
-      description: Engage in a conversation with a voiceagent by sending a message.
+      description: Engage in a conversation with a voice agent by sending a message.
       tags:
         - Voiceagent
       parameters:
@@ -172,7 +199,7 @@ paths:
                   example: Can you tell me more about the services you provide?
       responses:
         '200':
-          description: Voiceagent response received successfully.
+          description: Voice agent response received successfully.
           content:
             application/json:
               schema:
@@ -187,15 +214,13 @@ paths:
         '400':
           description: Invalid request parameters.
         '404':
-          description: Voiceagent not found.
+          description: Voice agent not found.
         '500':
           description: Server error while communicating with the voiceagent.
-  /Voiceagent/{voiceagent_id}/inbound_call:
+  /Voiceagent/{voiceagent_id}/talk:
     post:
-      summary: Receive inbound calls
-      description: >-
-        This URL to be used as answer URL in your plivo applications for inbound
-        calls.
+      summary: Talk to a voice agent
+      description: This URL to be used as answer URL in your Plivo platform.
       tags:
         - Voiceagent
       parameters:
@@ -206,9 +231,7 @@ paths:
             type: string
           description: The unique ID of the voiceagent.
       requestBody:
-        description: >-
-          This request body is sent by Plivo server to voiceagents for inbound
-          calls.
+        description: This request body is sent by Plivo server to voice agents for calls.
         required: true
         content:
           application/json:
@@ -223,16 +246,18 @@ paths:
                   type: string
                   description: >-
                     The phone number of the party that initiated the call along
-                    with the country code. If the call is inbound, it is the
-                    caller's caller ID. If outbound, it is the phone number
-                    specified as the caller ID.
+                    with the country code. If the call is inbound, then it is
+                    the caller’s caller ID. If the call is outbound i.e.
+                    initiated via a request to the API, then this is the phone
+                    number you specify as the caller ID.
                   example: '+14155552671'
                 To:
                   type: string
                   description: >-
                     The phone number of the called party with the country code.
-                    If the call is inbound, it is your incoming phone number. If
-                    outbound, it is the number you provided to call.
+                    If the call is inbound, then it’s your incoming phone
+                    number. If the call is outbound, then it’s the phone number
+                    you provided to call.
                   example: '+14155552672'
                 ForwardedFrom:
                   type: string
@@ -280,7 +305,7 @@ paths:
                   example: 497f6eca-6276-4993-bfeb-53cbbbba6f10
       responses:
         '200':
-          description: Voiceagent started audio stream.
+          description: Voice agent started audio stream.
           content:
             application/json:
               schema:
@@ -300,7 +325,7 @@ paths:
         '400':
           description: Invalid request parameters.
         '404':
-          description: Voiceagent not found.
+          description: Voice agent not found.
         '500':
           description: Server error while communicating with the voiceagent.
   /Function:
@@ -521,6 +546,12 @@ components:
           type: string
           description: The name of the voiceagent.
           example: Jack
+        welcome_message:
+          type: string
+          description: >-
+            Voice agent will use this message as a first message when connected
+            to a call.
+          example: Hi, I am Jack. How can I help you today?
         prompt:
           type: string
           description: The initial prompt for the agent to set context.
@@ -562,7 +593,7 @@ components:
           items:
             type: string
             format: uuid
-          description: IDs of functions the voiceagent can perform.
+          description: IDs of functions the voice agent can perform.
         tts:
           type: object
           description: The configuration for text-to-speech.
@@ -662,7 +693,7 @@ components:
                 - ur
                 - vi
                 - cy
-        callTimeout:
+        call_timeout:
           type: integer
           example: 30
           description: Time in seconds before the call times out.
@@ -677,16 +708,22 @@ components:
           type: string
           description: The name of the voiceagent.
           example: Jack
+        welcome_message:
+          type: string
+          description: >-
+            Voice agent will use this message as a first message when connected
+            to a call.
+          example: Hi, I am Jack. How can I help you today?
         websocket_url:
           type: string
           example: >-
             wss://api.example.com/v1/Account/{auth_id}/Voiceagent/{voiceagent_id}/connect
           description: The URL for WebSocket communication with the voiceagent.
-        inbound_call_url:
+        call_url:
           type: string
-          description: URL to be used to handle inbound calls.
+          description: URL to be used to answer calls.
           example: >-
-            https://api.plivo.com/v1/Account/{auth_id}/Voiceagent/{voiceagent_id}/inbound_call
+            https://api.plivo.com/v1/Account/{auth_id}/Voiceagent/{voiceagent_id}/talk
         prompt:
           type: string
           description: The initial prompt for the agent to set context.
@@ -728,7 +765,7 @@ components:
           items:
             type: string
             format: uuid
-          description: IDs of functions the voiceagent can perform.
+          description: IDs of functions the voice agent can perform.
         tts:
           type: object
           description: The configuration for text-to-speech.
@@ -828,7 +865,7 @@ components:
                 - ur
                 - vi
                 - cy
-        callTimeout:
+        call_timeout:
           type: integer
           example: 30
           description: Time in seconds before the call times out.
@@ -839,6 +876,12 @@ components:
           type: string
           description: The name of the voiceagent.
           example: Jack
+        welcome_message:
+          type: string
+          description: >-
+            Voice agent will use this message as a first message when connected
+            to a call.
+          example: Hi, I am Jack. How can I help you today?
         prompt:
           type: string
           description: The initial prompt for the agent to set context.
@@ -880,7 +923,7 @@ components:
           items:
             type: string
             format: uuid
-          description: IDs of functions the voiceagent can perform.
+          description: IDs of functions the voice agent can perform.
         tts:
           type: object
           description: The configuration for text-to-speech.
@@ -980,7 +1023,7 @@ components:
                 - ur
                 - vi
                 - cy
-        callTimeout:
+        call_timeout:
           type: integer
           example: 30
           description: Time in seconds before the call times out.
@@ -1024,7 +1067,7 @@ components:
                 type: boolean
                 example: true
                 description: Indicates if the parameter is required.
-        fixedParameters:
+        fixed_parameters:
           type: array
           description: A list of fixed parameters for the function.
           items:
@@ -1082,7 +1125,7 @@ components:
                 type: boolean
                 example: true
                 description: Indicates if the parameter is required.
-        fixedParameters:
+        fixed_parameters:
           type: array
           description: A list of fixed parameters for the function.
           items:

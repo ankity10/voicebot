@@ -187,8 +187,8 @@ const PricingPage = () => {
         },
         {
             title: "LLM, STT, and TTS",
-            price: "At cost",
-            description: "Pay only for what you use",
+            price: "At Cost",
+            description: "Pay only what you are charged from vendor",
             features: ["Latest AI models", "High accuracy", "Flexible integration"]
         }
     ];
