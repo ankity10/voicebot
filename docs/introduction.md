@@ -23,7 +23,7 @@ These agents provide significant benefits to businesses across various industrie
 1. Automated Customer Support
 2. Voice Enabled Knowledge Base
 
-## Key Components of Voice Agent
+## Key Components of AI Voice Agent
 
 ![voice agent](/img/voice_agent_arch.svg)
 
